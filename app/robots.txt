@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# Mengarahkan Google ke Sitemap .app Anda
+# Menghubungkan Google langsung ke daftar 10.000 halaman Anda
 Sitemap: https://lifecalc.app/sitemap.xml
