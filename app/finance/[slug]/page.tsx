@@ -14,11 +14,10 @@ interface Car {
 const cars = carsData as Car[];
 
 // 1. TETAP AKTIFKAN ON-DEMAND GENERATION
-// Ini menjamin sisa 9.800 halaman tetap bisa diakses meskipun tidak di-build di awal.
 export const dynamicParams = true; 
 
 // 2. DAFTARKAN 200 SLUG PERTAMA SEMASA BUILD
-// Angka 200 sangat aman untuk menjaga log Vercel tetap di bawah 4MB.
+// Menggunakan angka 200 sesuai trial sukses Anda sebelumnya.
 export async function generateStaticParams() {
   return cars.slice(0, 200).map((car) => ({
     slug: car.slug,
