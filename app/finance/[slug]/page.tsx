@@ -13,19 +13,19 @@ interface Car {
 
 const cars = carsData as Car[];
 
-// 1. BENARKAN HALAMAN DIJANA SECARA DINAMIK (On-Demand)
-// Ini memastikan baki 9,000 halaman tidak akan 404 walaupun tidak didaftarkan semasa build.
+// 1. TETAP AKTIFKAN ON-DEMAND GENERATION
+// Ini menjamin sisa 9.500 halaman tetap bisa diakses meskipun tidak di-build di awal.
 export const dynamicParams = true; 
 
-// 2. DAFTARKAN 1,000 SLUG PERTAMA SEMASA BUILD
-// Mengehadkan kepada 1,000 mengikut permintaan anda untuk mengelakkan had log Vercel.
+// 2. DAFTARKAN 500 SLUG PERTAMA SEMASA BUILD
+// Angka 500 jauh lebih aman untuk limit log dan memori Vercel Free Tier.
 export async function generateStaticParams() {
-  return cars.slice(0, 1000).map((car) => ({
+  return cars.slice(0, 500).map((car) => ({
     slug: car.slug,
   }));
 }
 
-// 3. METADATA DINAMIK (Logika asal dikekalkan sepenuhnya)
+// 3. METADATA DINAMIK (Disesuaikan dengan format file Anda)
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const car = cars.find((c) => c.slug === slug);
@@ -37,14 +37,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-// 4. SERVER COMPONENT (Logika asal dikekalkan sepenuhnya)
+// 4. SERVER COMPONENT UTAMA
 export default async function FinanceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const car = cars.find((c) => c.slug === slug);
 
   if (!car) notFound();
 
-  // Memproses perbandingan di sisi server agar lebih cepat
+  // Memproses perbandingan secara acak dari database asli
   const suggestions = cars
     .filter(c => c.slug !== car.slug)
     .sort(() => 0.5 - Math.random())
