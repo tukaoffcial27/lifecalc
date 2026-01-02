@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Mengarahkan Google ke Sitemap .app Anda
+Sitemap: https://lifecalc.app/sitemap.xml

@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* KONFIGURASI TEMA MEWAH */
+@theme {
+  --color-gold: #C5A059;
+  --color-pearl: #FCFBFA;
+  --color-dark: #1A1A1A;
+}
+
+/* RESET & BASE STYLES */
+body {
+  background-color: #FCFBFA; /* Pearl */
+  color: #1A1A1A; /* Dark */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Memperhalus rendering font agar lebih tajam dan profesional */
+* {
+  @apply selection:bg-gold/30 selection:text-black;
+}
+
+@layer utilities {
+  .text-gold { color: #C5A059; }
+  .bg-gold { background-color: #C5A059; }
+}

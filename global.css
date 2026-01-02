@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* DEFINISI WARNA LUXURY UNTUK TAILWIND v4 */
+@theme {
+  --color-gold: #C5A059;
+  --color-pearl: #FCFBFA;
+  --color-dark: #1A1A1A;
+}
+
+/* VARIABEL LAMA UNTUK KOMPATIBILITAS */
+:root {
+  --luxury-gold: #C5A059;
+  --luxury-dark: #1A1A1A;
+  --luxury-pearl: #FCFBFA;
+}
+
+body {
+  background-color: var(--luxury-pearl);
+  color: var(--luxury-dark);
+  @apply antialiased;
+}
