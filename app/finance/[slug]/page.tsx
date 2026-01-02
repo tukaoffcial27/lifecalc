@@ -14,18 +14,18 @@ interface Car {
 const cars = carsData as Car[];
 
 // 1. TETAP AKTIFKAN ON-DEMAND GENERATION
-// Ini menjamin sisa 9.500 halaman tetap bisa diakses meskipun tidak di-build di awal.
+// Ini menjamin sisa 9.800 halaman tetap bisa diakses meskipun tidak di-build di awal.
 export const dynamicParams = true; 
 
-// 2. DAFTARKAN 500 SLUG PERTAMA SEMASA BUILD
-// Angka 500 jauh lebih aman untuk limit log dan memori Vercel Free Tier.
+// 2. DAFTARKAN 200 SLUG PERTAMA SEMASA BUILD
+// Angka 200 sangat aman untuk menjaga log Vercel tetap di bawah 4MB.
 export async function generateStaticParams() {
-  return cars.slice(0, 500).map((car) => ({
+  return cars.slice(0, 200).map((car) => ({
     slug: car.slug,
   }));
 }
 
-// 3. METADATA DINAMIK (Disesuaikan dengan format file Anda)
+// 3. METADATA DINAMIK (Sesuai file asli Anda)
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const car = cars.find((c) => c.slug === slug);
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-// 4. SERVER COMPONENT UTAMA
+// 4. SERVER COMPONENT UTAMA (Sesuai file asli Anda)
 export default async function FinanceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const car = cars.find((c) => c.slug === slug);
