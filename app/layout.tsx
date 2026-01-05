@@ -18,6 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* Google AdSense Script */}
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6834526241041119"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body className={`${inter.className} bg-[#FCFBFA] text-black font-medium antialiased`}>
         
         {/* 1. HEADER: SKALA DIPERHALUS UNTUK KESAN ELEGAN */}
@@ -118,7 +126,6 @@ export default function RootLayout({
                   <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-gold mb-6">Legal Protocol</h4>
                   <div className="flex flex-col gap-4">
                     <Link href="/privacy" className="text-sm font-black text-black hover:text-gold transition-colors">Privacy Policy</Link>
-                    {/* Link Terms tetap dipertahankan sesuai file master */}
                     <Link href="/terms" className="text-sm font-black text-black hover:text-gold transition-colors">Terms of Service</Link>
                     <Link href="/contact" className="text-sm font-black text-black hover:text-gold transition-colors">Contact Intelligence</Link>
                   </div>
